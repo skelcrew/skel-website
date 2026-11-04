@@ -46,4 +46,4 @@ test: [bun test]
 
 ## Contact
 
-Built by Simon Carstensen in Denmark. hello@skel.run
+Built by Simon Carstensen in Denmark. hello@skelcrew.dev
