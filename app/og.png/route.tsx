@@ -60,15 +60,15 @@ export function GET() {
         style={{
           display: "flex",
           marginTop: "auto",
-          fontSize: 68,
+          fontSize: 56,
           letterSpacing: -2,
           color: color.fg,
         }}
       >
-        Claude Code, always on.
+        Your own team of coding agents, working while you’re away.
       </div>
       <div style={{ display: "flex", marginTop: 18, fontSize: 32, color: color.fg2 }}>
-        Issues in, reviewed pull requests out, while you are away.
+        Open source. Your harness, your models, your own server.
       </div>
       <div
         style={{
@@ -82,7 +82,7 @@ export function GET() {
         }}
       >
         <span>skel.run</span>
-        <span style={{ color: color.accent }}>Open source at first release</span>
+        <span style={{ color: color.accent }}>Open source</span>
       </div>
     </div>,
     size,

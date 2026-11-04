@@ -6,105 +6,66 @@ import { Container, Figure } from "./ui";
 
 // Illustrative output only. Swap in real `skel` output once it exists.
 
-const lead = [
-  "{dim:you@laptop $} skel --remote you@workbox",
+const brief = [
+  "{dim:you@laptop ~/app $} skel --remote you@workbox",
   "",
-  "{b:you}   Make issues for the two checkout bugs in app and the",
-  "      broken footer link in site, and start them.",
+  "{wait:>} Fix the login redirect and the slow search in app,",
+  "  and add dark mode to site.",
   "",
-  "{b:lead}  Created app#12, app#13 and site#4, and started a thread",
-  "      for each. I'll tell you when one needs you.",
-  '      {dim:$ skel issue app "VAT number lost at checkout"}',
-  "      {dim:$ skel start app#12}  {dim:…}",
+  "Created 3 tasks and started a thread on each:",
   "",
-  "{dim:Ctrl-] to detach. Close the laptop; the threads keep working.}",
+  "  app-41    Login sends you to / instead of back    {run:working}",
+  "  app-42    Search is slow on large accounts        {run:working}",
+  "  site-17   Add dark mode                           {run:working}",
+  "",
+  "I'll tell you when one of them needs you.",
 ];
 
-/** One `skel ls` row. Pads by visible text, then adds the tone markup. */
-function row(cells: [string, number, string?][]) {
-  return cells
-    .map(([text, width, tone]) => {
-      const pad = " ".repeat(Math.max(0, width - text.length));
-      return (tone ? `{${tone}:${text}}` : text) + pad;
-    })
-    .join("")
-    .trimEnd();
-}
-
-const threads = [
-  "{dim:$} skel ls",
-  `{dim:${row([
-    ["THREAD", 9],
-    ["ISSUE", 30],
-    ["STATUS", 10],
-    ["PR", 6],
-    ["NEEDS YOU", 0],
-  ])}}`,
-  row([
-    ["app#12", 9],
-    ["VAT number lost at checkout", 30],
-    ["waiting", 10],
-    ["#31", 6],
-    ["! ready to merge", 0, "wait"],
-  ]),
-  row([
-    ["app#13", 9],
-    ["Coupon applied twice", 30],
-    ["working", 10, "run"],
-    ["#32", 6],
-  ]),
-  row([
-    ["site#4", 9],
-    ["Broken footer link", 30],
-    ["waiting", 10],
-    ["–", 6],
-    ["? builder asks", 0, "wait"],
-  ]),
-  row([
-    ["app#9", 9],
-    ["Saved addresses at checkout", 30],
-    ["done", 10, "ok"],
-    ["#27", 6],
-    ["merged", 0, "dim"],
-  ]),
+const away = [
+  "{dim:app-42, on the server}",
   "",
-  "{dim:2 repositories · 3 open threads · 2 need you}",
+  "{dim:09:12}  builder    opens pull request #88",
+  "{dim:09:20}  reviewer   {bad:asks for 2 changes}   {dim:codex}",
+  "{dim:09:31}  builder    pushes the fixes",
+  "{dim:09:38}  CI         {bad:fails: search.test.ts}",
+  "{dim:09:44}  builder    fixes the test",
+  "{dim:09:51}  reviewer   {ok:approves}, CI {ok:green}",
+  "",
+  "{dim:Two review rounds and a failing check, with the laptop closed.}",
 ];
 
 const review = [
-  "{dim:app#13 · Coupon applied twice · PR #32}",
+  "{b:skel reviewer} {bad:requested changes} on #88        {dim:round 1 · codex}",
   "",
-  "{b:round 1}   builder    7 commits · bun test {ok:passing}",
-  "          reviewer   {bad:changes requested}",
-  "                     · discount applied again on page reload",
-  "                     · no test for two coupons in one cart",
-  "{b:round 2}   builder    2 commits · bun test {ok:passing}",
-  "          reviewer   {run:reviewing…}",
+  "{bad:HIGH}     Search builds its SQL from user input without parameters",
+  "{wait:MEDIUM}   Results load one query per row; slow on large accounts",
+  "{dim:LOW}      No test for a search with no results",
   "",
-  "{dim:Each round is a fresh reviewer that never sees the builder's context.}",
-  "{dim:Its verdict is the skel/review check. After 3 rounds, the thread needs you.}",
+  "{bad:✕} skel/review · changes requested",
+  "",
+  "{dim:A fresh reviewer every round, on another model than the builder.}",
+  "{dim:Its verdict is a GitHub review and a status check, so branch}",
+  "{dim:protection can require it.}",
 ];
 
-const needsYou = [
-  "{wait:!} {b:site#4} needs you. Its builder asks:",
-  "  The footer links to /legal, which was removed in March.",
-  "  Point it to /terms, or drop the link?",
+const back = [
+  "{dim:$} skel ps",
+  "{dim:THREAD    STATUS    PR    NEEDS YOU}",
+  "app-41    waiting   #87   {ok:ready to merge}",
+  "app-42    waiting   #88   {ok:ready to merge}",
+  "site-17   waiting   #89   {wait:? builder asks}",
   "",
-  "{b:you}   Point it to /terms.",
-  "",
-  "{b:lead}  Sent to site#4.",
-  '      {dim:$ skel say site#4 "Point it to /terms."}',
-  "",
-  "{wait:!} {b:app#12} is approved and CI is green. PR #31 is ready to merge.",
-  "",
-  "{dim:Notes arrive in the lead's session, and on your phone if you set a notify command.}",
+  "{dim:$} skel attach site-17",
+  "{wait:?} Should dark mode follow the system setting, or have its",
+  "  own toggle?",
+  "  {b:1} Follow the system   {b:2} Its own toggle   {b:3} Both",
 ];
 
 const tabs = [
-  { id: "lead", label: "Talk to the lead", lines: lead },
-  { id: "threads", label: "Threads", lines: threads },
-  { id: "review", label: "Build ⇄ review", lines: review },
-  { id: "needs", label: "Needs you", lines: needsYou },
+  { id: "brief", label: "Brief your lead", lines: brief },
+  { id: "away", label: "While you're away", lines: away },
+  { id: "review", label: "Review", lines: review },
+  { id: "back", label: "Back at your desk", lines: back },
 ];
 
 /** Product preview: a terminal window with tabs that advance on their own until clicked. */
@@ -149,8 +110,8 @@ export function Demo() {
               <i className="size-2.5 rounded-full bg-line-2" />
               <i className="size-2.5 rounded-full bg-line-2" />
             </span>
-            <span>you@workbox · skel</span>
-            <span className="ml-auto hidden sm:inline">3 threads · 2 need you</span>
+            <span>you@workbox · lead</span>
+            <span className="ml-auto hidden sm:inline">2 ready to merge · 1 question</span>
           </div>
           <div
             key={active}

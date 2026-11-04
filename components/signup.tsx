@@ -77,7 +77,7 @@ export function FinalCta() {
     <section id="updates" className="border-t border-line">
       <Container className="py-20 md:py-32">
         <Label className="mb-6">Get updates</Label>
-        <H2 className="mb-6 max-w-[14ch]">Be first to try Skel.</H2>
+        <H2 className="mb-6 max-w-[14ch]">Be first to meet your team.</H2>
         <p className="mb-10 max-w-130 text-lg text-fg-2">
           Leave your email and I'll write when there's something to try. One or two emails a year,
           no newsletter.

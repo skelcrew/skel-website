@@ -1,30 +1,32 @@
 # Skel
 
-> Skel runs Claude Code on your server, many sessions at once, each in its own sandbox, and sees each GitHub issue through to a reviewed pull request. You talk to one lead; it writes the issues and starts the work. You merge.
+> Skel is your own team of coding agents, working while you're away. You brief a lead agent in the harness you already use. It writes the tasks and hands each one to a builder, and a fresh reviewer on another model checks every pull request. The team works on your own server, so you can close the laptop. You decide what merges. Open source.
 
-Status: in active development. The rewrite started on 3 November 2026 and has not had a public release yet. Updates: https://skel.run/#updates
+Status: early. Earlier versions ran tasks to pull requests through phases, roles and gates defined as files; the current rewrite, started in November 2026, organises agents as a small team instead. No public release yet. Updates: https://skel.run/#updates
 
-## How it works
+## The team
 
-- You run `skel` and talk to your lead: a Claude Code session on your server that knows all your repositories. From a laptop: `skel --remote you@server`.
-- The lead writes GitHub issues and starts a thread for each. A thread is one issue's branch, worktree, sandbox and builder session.
-- The builder works on the issue. When it's done, Skel pushes the branch and opens the pull request.
-- A fresh reviewer session reads the pull request adversarially and runs the tests. Its verdict is posted as a GitHub review and a `skel/review` status check. Changes go back to the builder, up to three rounds, then the thread needs you.
-- Failed CI checks and your pull request comments wake the builder again.
-- When a thread needs you (a question, the round limit, or approved and green), Skel tells you in the lead's session, and optionally on your phone. You answer through the lead and merge on GitHub; Skel cleans up.
+- The lead: your agent, in your harness, on your server. It turns what you say into tasks (GitHub issues) and starts a thread on each.
+- Builders: one per task, each in its own clone, branch and sandbox. A builder stays on the thread until the pull request merges.
+- Reviewers: a fresh one every round, on another model than the builder (Codex by default), looking for what the builder missed.
+- You: say what you want, answer questions, and decide what merges.
 
-## Safety
+## What you hand off
 
-- No agent reviews its own work: each review round is a fresh session without the builder's context.
-- Every agent runs in a bubblewrap sandbox: its folder is writable, the rest of the system is read-only, and the home folder and credentials are hidden.
-- Agents never see your GitHub token. Skel pushes and posts with your `gh` login, outside the sandbox.
-- Sessions run in tmux and outlive the daemon. State is in SQLite plus an append-only log per thread, and threads resume after a restart.
+- Task to merged pull request, while you're away
+- Many tasks at once, across repositories
+- Every pull request reviewed by a fresh agent; the verdict is a GitHub review and a `skel/review` status check
+- CI failures and pull request comments wake the builder again
+- It asks you only when it needs you: a builder's question, a review that won't settle, or a pull request that is approved and green
+- You decide what merges
 
-## Compatibility
+## Open
 
-- Claude Code is the only harness in the first release. GitHub is the only tracker and forge.
-- Runs on a Linux server, reached over SSH. Uses tmux, bubblewrap and the GitHub CLI.
-- Bring your own Claude subscription and GitHub login. The core will be free and open source.
+- Harness: Claude Code today, with Codex as reviewer. Codex, opencode and pi as harnesses next.
+- Models: builder on one, reviewer on another, on the subscriptions you already pay for. Skel never resells model usage.
+- Server: a Linux machine you control, over SSH, or a Sprite on Fly.io that Skel creates for you and that sleeps when there's no work.
+- Isolation: a sandbox per agent; your checkouts are never touched; your home folder and credentials are hidden; agents never see your GitHub token.
+- Free and open source.
 
 ## Settings example
 
@@ -32,7 +34,7 @@ Status: in active development. The rewrite started on 3 November 2026 and has no
 # ~/.config/skel/config.yaml
 harness: claude
 builder:  { model: opus }
-reviewer: { model: opus }
+reviewer: { harness: codex }
 max_rounds: 3
 
 # skel.yaml in a repository

@@ -2,8 +2,8 @@ import { site } from "@/lib/site";
 import { buttonStyles, Container, GithubIcon, Logo } from "./ui";
 
 const links = [
-  { href: "/#how", label: "How it works" },
-  { href: "/#guarantees", label: "Safety" },
+  { href: "/#team", label: "The team" },
+  { href: "/#open", label: "Open" },
   { href: "/#status", label: "Status" },
   { href: "/#faq", label: "FAQ" },
 ];

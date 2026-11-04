@@ -8,11 +8,11 @@ const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" });
 
 const description =
-  "Skel runs Claude Code on your server, many sessions at once, each in its own sandbox. Every issue ends as a pull request a fresh agent has reviewed. You merge.";
+  "Brief a lead agent in the harness you already use. It writes the tasks, a builder takes each one, and a fresh reviewer on another model checks every pull request, on your own server while you're away. You decide what merges.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: "Skel · Claude Code, always on",
+  title: "Skel · your own team of coding agents",
   description,
   icons: {
     icon: "/skel-icon.png",
@@ -20,16 +20,16 @@ export const metadata: Metadata = {
   },
   openGraph: {
     siteName: "Skel",
-    title: "Skel · Claude Code, always on",
+    title: "Skel · your own team of coding agents",
     description:
-      "Issues in, reviewed pull requests out, while your laptop is closed. Open source at first release.",
+      "Your own team of coding agents, working while you're away. Open source, on your own server.",
     url: site.url,
     images: [
       {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "Skel: Claude Code, always on.",
+        alt: "Skel: your own team of coding agents, working while you're away.",
       },
     ],
   },

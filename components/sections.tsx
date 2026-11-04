@@ -2,19 +2,68 @@ import { site } from "@/lib/site";
 import { TermText } from "./terminal";
 import { Container, Figure, H2, Label, Section } from "./ui";
 
-/** Big two-tone statement: what Skel does, then how, in a quieter colour. */
-export function Statement() {
+const glance = [
+  [
+    "For",
+    "Developers who already live in a coding agent.",
+    "Solo founders and senior developers first, then their team.",
+  ],
+  ["Runs", "On your own server.", "Or a Sprite on Fly.io, so you need no server at all."],
+  [
+    "Works with",
+    "Claude Code and Codex.",
+    "Builder on one, reviewer on the other. More harnesses next.",
+  ],
+  ["Price", "Free and open source.", "On the subscriptions you already pay for."],
+];
+
+export function AtAGlance() {
   return (
-    <Section rule id="how">
-      <Label className="mb-8">What it does</Label>
-      <p className="max-w-[24ch] text-[clamp(30px,4.2vw,56px)] font-medium leading-[1.12] tracking-[-0.03em]">
-        Skel runs Claude Code on your server and sees each issue through to the merge.{" "}
-        <span className="text-faint">
-          You talk to one lead. It writes the issues and starts a thread for each, and every thread
-          goes back and forth between a builder and a fresh reviewer until it's ready.
-        </span>
-      </p>
-      <SystemDiagram />
+    <Container className="pb-20 md:pb-32">
+      <Label className="mb-6 border-b border-line pb-6">At a glance</Label>
+      <dl className="grid gap-10 pt-4 sm:grid-cols-2 lg:grid-cols-4">
+        {glance.map(([term, main, rest]) => (
+          <div key={term}>
+            <dt>
+              <Label className="mb-3">{term}</Label>
+            </dt>
+            <dd className="text-xl leading-snug">
+              {main} <span className="text-muted">{rest}</span>
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </Container>
+  );
+}
+
+const problems = [
+  [
+    "You are the scheduler",
+    "Five chat windows, one laptop that has to stay open, and you checking on each agent in turn. Parallel work runs at the speed of your attention.",
+  ],
+  [
+    "The work stops at the pull request",
+    "CI fails, a reviewer comments, main moves on. By then the agent is gone, so you pick it up and explain everything again.",
+  ],
+];
+
+export function Problem() {
+  return (
+    <Section rule id="problem">
+      <Label className="mb-6">The problem</Label>
+      <H2 className="mb-14 max-w-[16ch]">Assign tasks, not tabs.</H2>
+      <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-2">
+        {problems.map(([title, body], i) => (
+          <div key={title} className="bg-panel p-6 sm:p-8">
+            <p className="mb-6 font-mono text-xs uppercase tracking-[0.16em] text-accent">
+              Problem {i + 1}
+            </p>
+            <h3 className="mb-3 text-2xl font-semibold tracking-tight">{title}</h3>
+            <p className="text-[17px] leading-relaxed text-fg-2">{body}</p>
+          </div>
+        ))}
+      </div>
     </Section>
   );
 }
@@ -45,22 +94,42 @@ function Connector() {
   );
 }
 
-function SystemDiagram() {
-  const phases = ["Issue", "Build", "Review", "Merge"];
+/** Big two-tone statement, then the team as a diagram. */
+export function Team() {
   return (
-    <Figure n="0.2" note="System" className="mt-16 md:mt-24">
-      <Box label="Work comes in">
-        <p className="flex flex-wrap gap-x-8 gap-y-1 text-lg">
-          <span>Tell the lead</span>
-          <span>GitHub issues</span>
-          <code className="font-mono text-base leading-7">skel issue</code>
+    <Section rule id="team">
+      <Label className="mb-8">What we believe</Label>
+      <p className="max-w-[24ch] text-[clamp(30px,4.2vw,56px)] font-medium leading-[1.12] tracking-[-0.03em]">
+        Run agents like a team, not a pipeline.{" "}
+        <span className="text-faint">
+          Capable agents need what a good team needs: a clear brief, a space of their own, a
+          colleague who reviews their work, and someone who decides. Not a flowchart.
+        </span>
+      </p>
+      <TeamDiagram />
+    </Section>
+  );
+}
+
+function TeamDiagram() {
+  const phases = ["Task", "Build", "Review", "Merge"];
+  return (
+    <Figure n="0.2" note="Your team" className="mt-16 md:mt-24">
+      <Box label="Your brief">
+        <p className="text-lg">
+          One sentence to your lead{" "}
+          <span className="text-muted">in the harness you already use</span>
         </p>
       </Box>
       <Connector />
       <div className="grid gap-3 md:grid-cols-[1fr_40px_260px] md:items-center md:gap-0">
         <div className="rounded-xl border border-accent/70 bg-bg p-5 shadow-[0_0_60px_-24px_var(--color-accent)]">
-          <p className="mb-4 text-xl font-semibold">Skel, on your server</p>
-          <div className="mb-4 flex flex-wrap items-center gap-2 font-mono text-xs uppercase tracking-[0.14em]">
+          <Label className="mb-3 text-accent">The lead</Label>
+          <p className="mb-4 text-xl font-semibold">
+            Takes your brief.{" "}
+            <span className="font-normal text-muted">Turns it into tasks and hands them out.</span>
+          </p>
+          <div className="flex flex-wrap items-center gap-2 font-mono text-xs uppercase tracking-[0.14em]">
             {phases.map((p, i) => (
               <span key={p} className="flex items-center gap-2">
                 <span className="rounded-full border border-line-2 px-3 py-1.5">{p}</span>
@@ -68,25 +137,29 @@ function SystemDiagram() {
               </span>
             ))}
           </div>
-          <Label>Lead · threads · builder ⇄ reviewer · sandboxed</Label>
         </div>
         <div className="hidden h-px bg-line-2 md:block" />
         <Box label="You" className="border-dashed">
           <p className="text-lg">Answer questions.</p>
-          <p className="text-lg text-muted">Merge what's ready.</p>
+          <p className="text-lg text-muted">Decide what merges.</p>
         </Box>
       </div>
       <Connector />
       <div className="grid gap-3 md:grid-cols-2">
-        <Box label="Threads in parallel">
+        <Box label="Builders">
           <p className="text-lg">
-            One per issue{" "}
-            <span className="text-muted">each with its own branch, worktree and sandbox</span>
+            One per task.{" "}
+            <span className="text-muted">
+              Each in its own clone and sandbox, on the work until it merges.
+            </span>
           </p>
         </Box>
-        <Box label="Work goes out">
+        <Box label="Reviewers">
           <p className="text-lg">
-            A reviewed pull request <span className="text-muted">with CI green, on GitHub</span>
+            A fresh pair of eyes.{" "}
+            <span className="text-muted">
+              A new one every round, on another model, looking for what the builder missed.
+            </span>
           </p>
         </Box>
       </div>
@@ -94,97 +167,93 @@ function SystemDiagram() {
   );
 }
 
-const glance = [
-  ["For", "Developers who live in Claude Code.", "Solo or in a small team."],
-  ["Runs", "On a Linux server.", "Attach from your laptop over SSH, then close the lid."],
-  ["Works with", "Claude Code and GitHub.", "Other harnesses and trackers later."],
-  ["Price", "Free, open source core.", "At first release. Bring your own Claude subscription."],
+const handoffs = [
+  "Task to merged PR, while you're away",
+  "Many tasks at once, across repos",
+  "Every PR reviewed by a fresh agent",
+  "CI failures and comments handled",
+  "Asks you only when it needs you",
+  "You decide what merges",
 ];
-
-export function AtAGlance() {
-  return (
-    <Container className="pb-20 md:pb-32">
-      <Label className="mb-6 border-b border-line pb-6">At a glance</Label>
-      <dl className="grid gap-10 pt-4 sm:grid-cols-2 lg:grid-cols-4">
-        {glance.map(([term, main, rest]) => (
-          <div key={term}>
-            <dt>
-              <Label className="mb-3">{term}</Label>
-            </dt>
-            <dd className="text-xl leading-snug">
-              {main} <span className="text-muted">{rest}</span>
-            </dd>
-          </div>
-        ))}
-      </dl>
-    </Container>
-  );
-}
 
 const steps: { n: string; name: string; body: string; lines: string[] }[] = [
   {
     n: "01",
-    name: "Issue",
-    body: "Tell the lead what you want. It writes a GitHub issue and starts a thread: a branch, a worktree and a sandbox of its own.",
+    name: "Brief",
+    body: "Tell your lead what you want, in one sentence. It writes the task as a GitHub issue and starts a thread for it.",
     lines: [
-      "{dim:lead · app#12}",
-      "VAT number is lost on",
-      "blur in the EU checkout.",
+      "{dim:lead}",
+      "{wait:>} Search is slow on",
+      "  large accounts in app.",
       "",
-      "{dim:$} skel start app#12",
-      "{ok:✓} skel/12-vat-number",
+      "{ok:✓} task app-42 created",
+      "{ok:✓} thread started",
       "{ok:→ build}",
     ],
   },
   {
     n: "02",
     name: "Build",
-    body: "A builder, a Claude Code session in the sandbox, works on the issue. When it's done, Skel pushes the branch and opens the pull request.",
+    body: "A builder works in its own clone, branch and sandbox, and opens the pull request. It stays on the thread after that, and remembers why it made each choice.",
     lines: [
-      "{dim:app#12 · builder}",
-      "{ok:✓} failing test added",
-      "{ok:✓} fix in AddressForm",
+      "{dim:app-42 · builder}",
+      "{ok:✓} batched the queries",
+      "{ok:✓} test for no results",
       "{ok:✓} bun test",
-      "{dim:$} skel done",
-      "{ok:✓} pushed · PR #31",
+      "{dim:$} skel submit",
+      "{ok:✓} pushed · PR #88",
       "{ok:→ review}",
     ],
   },
   {
     n: "03",
     name: "Review",
-    body: "A fresh reviewer reads the diff adversarially and runs the tests. Changes go back to the builder, up to three rounds, then it asks you.",
+    body: "A fresh reviewer on another model reads the diff and runs the tests. Its verdict is a GitHub review and a status check. The builder fixes, and it checks again.",
     lines: [
-      "{dim:app#12 · reviewer · r1}",
+      "{dim:#88 · reviewer · codex}",
       "{bad:changes requested}",
-      "· empty VAT not handled",
-      "{dim:app#12 · reviewer · r2}",
+      "· SQL built from input",
+      "· one query per row",
+      "{dim:#88 · round 2}",
       "{ok:approved}",
-      "skel/review {ok:✓ success}",
       "{ok:→ CI}",
     ],
   },
   {
     n: "04",
     name: "Merge",
-    body: "Failed checks and your PR comments wake the builder again. Approved and green, it waits for you. You merge, and Skel cleans up.",
+    body: "A failing check or a comment on the PR wakes the builder again. When it's approved and green, the thread asks for you. You merge.",
     lines: [
-      "{dim:app#12 · PR #31}",
-      "{ok:✓} review approved",
-      "{ok:✓} CI green",
-      "{wait:! needs you: ready}",
+      "{dim:app-42 · PR #88}",
+      "{bad:✕} CI: search.test.ts",
+      "{ok:✓} builder fixed it",
+      "{ok:✓} approved, CI green",
+      "{wait:! ready to merge}",
       "",
-      "{dim:you merge on GitHub}",
-      "{ok:✓ thread done}",
+      "{ok:✓ you merge}",
     ],
   },
 ];
 
-export function TaskSteps() {
+export function Handoff() {
   return (
-    <Section rule>
-      <Label className="mb-6">How an issue moves</Label>
-      <H2 className="mb-14 max-w-[18ch]">From one sentence to a merged pull request.</H2>
+    <Section rule id="how">
+      <Label className="mb-6">What you hand off</Label>
+      <H2 className="mb-6 max-w-[18ch]">Your team owns the loop, from task to merge.</H2>
+      <p className="mb-10 max-w-150 text-lg text-fg-2">
+        Most coding agents stop when they open a pull request. Skel's team stays on it, so you can
+        hand off the whole task, not just the first draft.
+      </p>
+      <ul className="mb-14 flex flex-wrap gap-2.5">
+        {handoffs.map((h) => (
+          <li
+            key={h}
+            className="rounded-full border border-line-2 px-4 py-2 font-mono text-[13px] text-fg-2"
+          >
+            {h}
+          </li>
+        ))}
+      </ul>
       <ol className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
         {steps.map((s) => (
           <li key={s.n} className="flex flex-col rounded-2xl border border-line bg-panel p-4">
@@ -202,50 +271,22 @@ export function TaskSteps() {
   );
 }
 
-export function Why() {
-  return (
-    <Section rule className="grid gap-10 md:grid-cols-2 md:gap-16">
-      <div>
-        <Label className="mb-6">Why</Label>
-        <H2 className="max-w-[12ch]">You lead. Agents do the work.</H2>
-      </div>
-      <div className="space-y-5 text-lg leading-relaxed text-fg-2 md:pt-12">
-        <p>
-          Coding agents can do real work now, but each one still needs you in a chat window, and
-          stops when your laptop does. Run three at once and your day becomes switching between
-          them.
-        </p>
-        <p>
-          Skel keeps them running on a server, in parallel, and only interrupts you when a decision
-          is yours: a question, a review that won't settle, a pull request ready to merge. You stay
-          the team lead who knows the architecture.
-        </p>
-        <p>
-          It stays small. You stay in Claude Code, with no new app to live in. Its test for every
-          feature: if the next model is twice as good, does this become dead code? If yes, it isn't
-          built.
-        </p>
-      </div>
-    </Section>
-  );
-}
-
-const rules = [
+const openPoints = [
   [
-    "No agent reviews its own work",
-    "Every review round is a fresh session that never sees the builder's context. Its verdict is a GitHub status check, so branch protection can require it.",
+    "Your harness",
+    "You brief your lead in the tool you already use. Claude Code today, with Codex, opencode and pi next.",
   ],
   [
-    "Your tokens stay out",
-    "Agents never see your GitHub token. They call Skel, and Skel pushes and posts with your login, outside the sandbox.",
+    "Your models",
+    "Builder on one model, reviewer on another, so a review doesn't share the builder's blind spots. On the subscriptions you already pay for.",
   ],
   [
-    "Every agent is sandboxed",
-    "Each thread gets its own branch, worktree and sandbox. The rest of the system is read-only, and your home folder and credentials are hidden.",
+    "A sandbox per agent",
+    "Each thread gets its own clone, branch and sandbox. Your checkouts are never touched, and your home folder and credentials stay hidden.",
   ],
   [
-    "Nothing is lost",
-    "Sessions outlive the daemon, and every change goes into an append-only log. After a restart, Skel resumes each thread and catches up on what it missed.",
+    "No tokens inside",
+    "Agents never see your GitHub token. Skel pushes and posts for them, outside the sandbox, with your own login.",
   ],
 ];
 
@@ -253,7 +294,7 @@ const config = [
   "{dim:# ~/.config/skel/config.yaml}",
   "{key:harness}: claude",
   "{key:builder}:  { {key:model}: opus }",
-  "{key:reviewer}: { {key:model}: opus }",
+  "{key:reviewer}: { {key:harness}: codex }",
   "{key:max_rounds}: 3",
   "",
   "{dim:# skel.yaml in a repository}",
@@ -261,18 +302,18 @@ const config = [
   "{key:test}: [bun test]",
 ];
 
-export function Guarantees() {
+export function Open() {
   return (
-    <Section rule id="guarantees">
-      <Label className="mb-6">Why you can leave it running</Label>
-      <H2 className="mb-6 max-w-[16ch]">Free inside the box. Skel holds the keys.</H2>
+    <Section rule id="open">
+      <Label className="mb-6">Open</Label>
+      <H2 className="mb-6 max-w-[16ch]">Your harness. Your models. Your server.</H2>
       <p className="mb-14 max-w-150 text-lg text-fg-2">
-        Agents get room to work without asking permission for every step. Skel draws the boundary
-        around them, and does everything that reaches the outside world itself.
+        Skel is open source and runs on a machine you control: your own server, or a Sprite on
+        Fly.io that sleeps when there's no work. No new app to move into, and no new subscription.
       </p>
       <div className="grid gap-3 lg:grid-cols-[1fr_420px]">
         <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
-          {rules.map(([title, body], i) => (
+          {openPoints.map(([title, body], i) => (
             <div key={title} className="bg-panel p-6">
               <p className="mb-6 font-mono text-xs text-accent">0{i + 1}</p>
               <h3 className="mb-2 text-lg font-semibold tracking-tight">{title}</h3>
@@ -290,30 +331,20 @@ export function Guarantees() {
   );
 }
 
-const stats = [
-  ["3 Nov", "2026: the rewrite started, from a spec and an empty repository"],
-  ["6", "milestones to the first release, each one used every day from the day it lands"],
-  [
-    "2 min",
-    "the demo it's built for: three issues in, the laptop closed, two reviewed pull requests out",
-  ],
-];
-
-type Stage = "done" | "now" | "next" | "then" | "later";
+type Stage = "done" | "now" | "next";
 
 const roadmap: [Stage, React.ReactNode][] = [
-  ["now", "Skel on the server: the lead in its sandbox, still running after you log out"],
-  ["next", "One issue to a reviewed pull request, with the builder and reviewer loop"],
-  ["next", "Many threads across repositories, and a note in the lead when one needs you"],
-  ["then", "Follow-through: failed checks, PR comments, conflicts, merges and restarts"],
+  ["done", "Four versions: task to pull request, unattended and sandboxed, with four harnesses"],
+  ["done", "Learned from daily use that flows got in the way; a new design around threads"],
+  ["now", "Skel on the server, and one thread to a reviewed pull request. Skel builds Skel"],
+  ["now", "First developers onboarded by hand"],
   [
-    "then",
+    "next",
     <>
-      <code className="font-mono text-[0.9em]">skel --remote</code>: from an empty server to a
-      running lead with one command
+      Parallel threads, follow-through after the PR,{" "}
+      <code className="font-mono text-[0.9em]">skel --remote</code> from the laptop, and the demo
     </>,
   ],
-  ["later", "The demo, recorded for real with nothing faked. Then the first release"],
 ];
 
 const stageColor = (stage: Stage) =>
@@ -323,20 +354,18 @@ export function Status() {
   return (
     <Section rule id="status">
       <Label className="mb-6">Status</Label>
-      <H2 className="mb-6 max-w-[16ch]">Skel will be built by Skel.</H2>
-      <p className="mb-14 max-w-150 text-lg text-fg-2">
-        This is a rewrite. An earlier version ran planner, builder and tester agents end to end; the
-        new one is smaller and runs on a server. From the second milestone on, Skel builds itself.
-      </p>
-      <div className="mb-16 grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-3">
-        {stats.map(([value, label]) => (
-          <div key={value} className="bg-panel p-6">
-            <p className="mb-3 text-[40px] font-semibold leading-none tracking-[-0.04em]">
-              {value}
-            </p>
-            <p className="text-[15px] leading-relaxed text-fg-2">{label}</p>
-          </div>
-        ))}
+      <H2 className="mb-6 max-w-[16ch]">Early, and moving fast.</H2>
+      <div className="mb-14 max-w-150 space-y-5 text-lg leading-relaxed text-fg-2">
+        <p>
+          Earlier versions of Skel were a software factory: phases, roles and gates defined as
+          files. Using it every day, I kept stepping outside the flow just to get things done. The
+          models improved faster than the flows.
+        </p>
+        <p>
+          So the new Skel organises agents the way a good small team works, and keeps one piece of
+          process: build and review. It's being rewritten now, carrying over what four versions
+          taught.
+        </p>
       </div>
       <ol className="max-w-200 border-t border-line">
         {roadmap.map(([stage, text], i) => (
@@ -357,28 +386,28 @@ export function Status() {
 
 const faq = [
   [
-    "Is this an IDE, or a new app?",
-    "Neither. You stay in Claude Code. Running skel attaches your terminal to the lead, a Claude Code session on your server, and Ctrl-] detaches. Results arrive as pull requests on GitHub.",
+    "How is this different from a few Claude Code windows and tmux?",
+    "Those stop when your laptop sleeps, and you are the scheduler. Skel's team runs on your server, each agent in its own sandbox, and stays on each task through review and CI until it's ready to merge. It asks for you only when it needs you.",
+  ],
+  [
+    "Do I have to move to a new app?",
+    "No. You brief your lead in the harness you already use, and results arrive as pull requests on GitHub. To answer a builder's question, you attach to its session, still in the same tool.",
   ],
   [
     "Does it merge code for me?",
-    "No. Every change is reviewed by a fresh agent and has to pass your CI, then the pull request waits for you. You merge on GitHub, and Skel cleans up the branch and worktree.",
+    "No. Every change is reviewed by a fresh agent on another model and has to pass your CI. Then the pull request waits for you. You decide what merges.",
   ],
   [
-    "Why a server?",
-    "So the work carries on when you close your laptop. Skel runs on a Linux machine you own and you reach it over SSH, with skel --remote you@server. Sessions survive logouts, restarts and upgrades.",
+    "Do I need a server?",
+    "Skel runs on a Linux machine that stays on, so the work carries on when you close the laptop. Use your own server over SSH, or let Skel create a Sprite on Fly.io for you, which sleeps when there's no work.",
   ],
   [
-    "Which agents does it work with?",
-    "Claude Code, for the first release. All GitHub calls sit behind one seam, so other trackers and forges can follow, and other harnesses after that.",
-  ],
-  [
-    "Do I need a new account or AI subscription?",
-    "No. Skel uses your own Claude subscription and your own GitHub login. It never resells model usage, and the core will be free and open source.",
+    "Do I need a new subscription?",
+    "No. Skel is free and open source, and runs on the model plans you already pay for. It never resells model usage.",
   ],
   [
     "When can I use it?",
-    "When the demo runs for real: three issues from one sentence to the lead, the laptop closed, and two reviewed, green pull requests waiting when it opens. Leave your email and you'll hear the day it does.",
+    "When the demo runs for real: three tasks from one sentence to the lead, the laptop closed, and two reviewed, green pull requests waiting when it opens. Leave your email and you'll hear the day it does.",
   ],
 ];
 
@@ -425,14 +454,12 @@ export function About() {
         </div>
       </div>
       <div className="space-y-5 text-lg leading-relaxed text-fg-2 md:pt-12">
+        <p>I'm building Skel because I hit this wall every day, building with coding agents.</p>
         <p>
-          Senior full-stack developer with two decades of JavaScript and Python, based in Denmark.
-          At Y Combinator in 2005 I co-founded Infogami with Aaron Swartz, and later co-created the
-          original Jottit with him.
-        </p>
-        <p>
-          These days I focus on putting AI into the development process: agentic coding tools, MCP
-          servers, and shaping stacks for agents to work in.
+          In Y Combinator's first batch in 2005, I co-founded Infogami and Jottit with Aaron Swartz.
+          Since then, twenty years of shipping web software: agencies, SaaS, and startups like
+          GoMore and TRAEDE. Lately I rebuilt Jottit as open source, with a donation from Paul
+          Graham, using coding agents every day.
         </p>
         <p className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-sm">
           {links.map(([label, href]) => (

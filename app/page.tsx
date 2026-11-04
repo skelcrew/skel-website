@@ -2,16 +2,7 @@ import { Demo } from "@/components/demo";
 import { Footer } from "@/components/footer";
 import { Hero } from "@/components/hero";
 import { Nav } from "@/components/nav";
-import {
-  About,
-  AtAGlance,
-  Faq,
-  Guarantees,
-  Statement,
-  Status,
-  TaskSteps,
-  Why,
-} from "@/components/sections";
+import { About, AtAGlance, Faq, Handoff, Open, Problem, Status, Team } from "@/components/sections";
 import { FinalCta } from "@/components/signup";
 
 export default function Home() {
@@ -22,10 +13,10 @@ export default function Home() {
         <Hero />
         <Demo />
         <AtAGlance />
-        <Statement />
-        <TaskSteps />
-        <Why />
-        <Guarantees />
+        <Problem />
+        <Team />
+        <Handoff />
+        <Open />
         <Status />
         <Faq />
         <About />
