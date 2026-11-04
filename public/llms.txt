@@ -1,0 +1,45 @@
+# Skel
+
+> Skel runs Claude Code on your server, many sessions at once, each in its own sandbox, and sees each GitHub issue through to a reviewed pull request. You talk to one lead; it writes the issues and starts the work. You merge.
+
+Status: in active development. The rewrite started on 3 November 2026 and has not had a public release yet. Updates: https://skel.run/#updates
+
+## How it works
+
+- You run `skel` and talk to your lead: a Claude Code session on your server that knows all your repositories. From a laptop: `skel --remote you@server`.
+- The lead writes GitHub issues and starts a thread for each. A thread is one issue's branch, worktree, sandbox and builder session.
+- The builder works on the issue. When it's done, Skel pushes the branch and opens the pull request.
+- A fresh reviewer session reads the pull request adversarially and runs the tests. Its verdict is posted as a GitHub review and a `skel/review` status check. Changes go back to the builder, up to three rounds, then the thread needs you.
+- Failed CI checks and your pull request comments wake the builder again.
+- When a thread needs you (a question, the round limit, or approved and green), Skel tells you in the lead's session, and optionally on your phone. You answer through the lead and merge on GitHub; Skel cleans up.
+
+## Safety
+
+- No agent reviews its own work: each review round is a fresh session without the builder's context.
+- Every agent runs in a bubblewrap sandbox: its folder is writable, the rest of the system is read-only, and the home folder and credentials are hidden.
+- Agents never see your GitHub token. Skel pushes and posts with your `gh` login, outside the sandbox.
+- Sessions run in tmux and outlive the daemon. State is in SQLite plus an append-only log per thread, and threads resume after a restart.
+
+## Compatibility
+
+- Claude Code is the only harness in the first release. GitHub is the only tracker and forge.
+- Runs on a Linux server, reached over SSH. Uses tmux, bubblewrap and the GitHub CLI.
+- Bring your own Claude subscription and GitHub login. The core will be free and open source.
+
+## Settings example
+
+```yaml
+# ~/.config/skel/config.yaml
+harness: claude
+builder:  { model: opus }
+reviewer: { model: opus }
+max_rounds: 3
+
+# skel.yaml in a repository
+setup: [bun install]
+test: [bun test]
+```
+
+## Contact
+
+Built by Simon Carstensen in Denmark. hello@skel.run
