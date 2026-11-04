@@ -68,7 +68,7 @@ export function GET() {
         Your own team of coding agents, working while you’re away.
       </div>
       <div style={{ display: "flex", marginTop: 18, fontSize: 32, color: color.fg2 }}>
-        Open source. Your harness, your models, your own server.
+        Open source. Open and adaptable, on your own server.
       </div>
       <div
         style={{

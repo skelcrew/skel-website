@@ -8,11 +8,11 @@ const glance = [
     "Developers who already live in a coding agent.",
     "Solo founders and senior developers first, then their team.",
   ],
-  ["Runs", "On your own server.", "Or a Sprite on Fly.io, so you need no server at all."],
+  ["Runs", "On a server that stays on.", "A Sprite on Fly.io, or any Linux server of your own."],
   [
     "Works with",
-    "Claude Code and Codex.",
-    "Builder on one, reviewer on the other. More harnesses next.",
+    "Claude Code, Codex and GitHub.",
+    "Built to take any harness, any model and any forge.",
   ],
   ["Price", "Free and open source.", "On the subscriptions you already pay for."],
 ];
@@ -273,20 +273,20 @@ export function Handoff() {
 
 const openPoints = [
   [
-    "Your harness",
-    "You brief your lead in the tool you already use. Claude Code today, with Codex, opencode and pi next.",
+    "Any harness, any model",
+    "Claude Code and Codex today, builder on one and reviewer on the other, so a review doesn't share the builder's blind spots. Built to take any harness and any model, on the subscriptions you already pay for.",
   ],
   [
-    "Your models",
-    "Builder on one model, reviewer on another, so a review doesn't share the builder's blind spots. On the subscriptions you already pay for.",
+    "Any forge",
+    "GitHub today. Tasks, pull requests and checks all go through one small seam, so GitLab, Forgejo and Codeberg can plug in without touching the rest.",
   ],
   [
-    "A sandbox per agent",
-    "Each thread gets its own clone, branch and sandbox. Your checkouts are never touched, and your home folder and credentials stay hidden.",
+    "Any server",
+    "The demo runs on a Sprite on Fly.io, which sleeps when there's no work. Any Linux machine that stays on works the same way, reached over SSH.",
   ],
   [
-    "No tokens inside",
-    "Agents never see your GitHub token. Skel pushes and posts for them, outside the sandbox, with your own login.",
+    "Yours, and sandboxed",
+    "Open source, on a machine you control. Every agent gets its own clone and sandbox, your credentials stay hidden, and agents never see your tokens.",
   ],
 ];
 
@@ -306,10 +306,11 @@ export function Open() {
   return (
     <Section rule id="open">
       <Label className="mb-6">Open</Label>
-      <H2 className="mb-6 max-w-[16ch]">Your harness. Your models. Your server.</H2>
+      <H2 className="mb-6 max-w-[16ch]">Open and adaptable, by design.</H2>
       <p className="mb-14 max-w-150 text-lg text-fg-2">
-        Skel is open source and runs on a machine you control: your own server, or a Sprite on
-        Fly.io that sleeps when there's no work. No new app to move into, and no new subscription.
+        Agents, models and tools will keep changing. Skel is built so the team you set up today
+        isn't tied to any of them: each harness, forge and server sits behind one small seam, and
+        the code is open for you to read, change and run.
       </p>
       <div className="grid gap-3 lg:grid-cols-[1fr_420px]">
         <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
@@ -391,7 +392,11 @@ const faq = [
   ],
   [
     "Do I have to move to a new app?",
-    "No. You brief your lead in the harness you already use, and results arrive as pull requests on GitHub. To answer a builder's question, you attach to its session, still in the same tool.",
+    "No. You brief your lead in the harness you already use, and results arrive as pull requests where you already review them. To answer a builder's question, you attach to its session, still in the same tool.",
+  ],
+  [
+    "Is it tied to Claude Code and GitHub?",
+    "Today it runs Claude Code and Codex, on GitHub. But being open and adaptable is a core design principle: harnesses, models, forges and servers each sit behind one seam, so other harnesses, any model, and GitLab, Forgejo or Codeberg can plug in.",
   ],
   [
     "Does it merge code for me?",
@@ -399,7 +404,7 @@ const faq = [
   ],
   [
     "Do I need a server?",
-    "Skel runs on a Linux machine that stays on, so the work carries on when you close the laptop. Use your own server over SSH, or let Skel create a Sprite on Fly.io for you, which sleeps when there's no work.",
+    "A machine that stays on, so the work carries on when you close the laptop. Skel can create a Sprite on Fly.io for you, which sleeps when there's no work, or run on any Linux server you already have, over SSH.",
   ],
   [
     "Do I need a new subscription?",

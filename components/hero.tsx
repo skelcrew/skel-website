@@ -14,7 +14,7 @@ export function Hero() {
       </p>
       <SignupForm id="email-top" />
       <Label className="mt-6 leading-relaxed">
-        Open source · your harness, your models · your own server
+        Open source · open and adaptable by design · your own server
       </Label>
     </Container>
   );
