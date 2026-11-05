@@ -337,15 +337,16 @@ type Stage = "done" | "now" | "next";
 const roadmap: [Stage, React.ReactNode][] = [
   ["done", "Four versions: task to pull request, unattended and sandboxed, with four harnesses"],
   ["done", "Learned from daily use that flows got in the way; a new design around threads"],
-  ["now", "Skel on the server, and one thread to a reviewed pull request. Skel builds Skel"],
-  ["now", "First developers onboarded by hand"],
   [
-    "next",
+    "done",
     <>
-      Parallel threads, follow-through after the PR,{" "}
-      <code className="font-mono text-[0.9em]">skel --remote</code> from the laptop, and the demo
+      Parallel threads, and <code className="font-mono text-[0.9em]">skel --remote</code> from the
+      laptop
     </>,
   ],
+  ["now", "Skel on the server, and one thread to a reviewed pull request. Skel builds Skel"],
+  ["now", "First developers onboarded by hand"],
+  ["next", "Follow-through after the PR, the demo, and the first public release in December 2026"],
 ];
 
 const stageColor = (stage: Stage) =>
@@ -412,7 +413,7 @@ const faq = [
   ],
   [
     "When can I use it?",
-    "When the demo runs for real: three tasks from one sentence to the lead, the laptop closed, and two reviewed, green pull requests waiting when it opens. Leave your email and you'll hear the day it does.",
+    "The first public release is planned for December 2026, once the demo runs for real: label issues on GitHub, close the laptop, and come back to reviewed, green pull requests. Leave your email and you'll hear the day it ships.",
   ],
 ];
 
