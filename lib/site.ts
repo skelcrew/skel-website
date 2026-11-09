@@ -4,7 +4,7 @@ export const site = {
   // The repo is private until the first release. Flip this to show GitHub links.
   repoPublic: false,
   repo: "https://github.com/skelcrew/skel",
-  email: "hello@skelcrew.dev",
+  email: "hello@skel.run",
   signup: "https://buttondown.com/api/emails/embed-subscribe/skelcrew",
   author: {
     name: "Simon Carstensen",
