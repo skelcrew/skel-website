@@ -461,10 +461,8 @@ export function About() {
       <div className="space-y-5 text-lg leading-relaxed text-fg-2 md:pt-12">
         <p>I'm building Skel because I hit this wall every day, building with coding agents.</p>
         <p>
-          In Y Combinator's first batch in 2005, I co-founded Infogami and Jottit with Aaron Swartz.
-          Since then, twenty years of shipping web software: agencies, SaaS, and startups like
-          GoMore and TRAEDE. Lately I rebuilt Jottit as open source, with a donation from Paul
-          Graham, using coding agents every day.
+          Twenty years of shipping web software: agencies, SaaS, and startups like GoMore and
+          TRAEDE. These days I build with coding agents every day.
         </p>
         <p className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-sm">
           {links.map(([label, href]) => (

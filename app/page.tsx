@@ -63,9 +63,8 @@ export default function Home() {
               className="text-fg underline underline-offset-4"
             >
               {site.author.name}
-            </a>
-            , who co-founded Infogami and Jottit with Aaron Swartz in Y Combinator's first batch.
-            Questions?{" "}
+            </a>{" "}
+            in Denmark. Questions?{" "}
             <a href={`mailto:${site.email}`} className="text-fg underline underline-offset-4">
               {site.email}
             </a>
