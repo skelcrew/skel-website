@@ -8,9 +8,18 @@ import { site } from "@/lib/site";
 // still live in components/ for after launch.
 
 const points = [
-  ["The lead", "Your agent, in the harness you already use. It turns what you say into tasks."],
-  ["Builders", "One per task, each in its own branch and sandbox, until the pull request merges."],
-  ["Reviewers", "A fresh one every round, on another model, looking for what the builder missed."],
+  [
+    "A team, not a chat",
+    "A lead plans the work and hands each task to a builder. A fresh reviewer checks every pull request. You stop passing messages between agents.",
+  ],
+  [
+    "In the apps you already use",
+    "Work comes in as GitHub issues and goes out as pull requests, so your team keeps working where it already works. More apps through plugins.",
+  ],
+  [
+    "Any harness, any model",
+    "Claude Code and Codex today, on the subscriptions you already pay for. Built to take any harness and any model, so you're never locked in.",
+  ],
 ];
 
 export default function Home() {
@@ -24,9 +33,9 @@ export default function Home() {
             Your own team of coding agents, working while you're away.
           </h1>
           <p className="mb-10 max-w-150 text-[clamp(18px,1.9vw,22px)] leading-normal text-fg-2">
-            Skel runs a small team of agents on your own server. You brief the lead, and it hands
-            each task to a builder and has a reviewer check every pull request. You close the
-            laptop. You decide what merges.
+            Skel gives you a team of coding agents that work together on your own server. They pick
+            up work in the apps your team already uses and run on whichever harness you prefer. You
+            close the laptop. You decide what merges.
           </p>
           <SignupForm id="email-top" button="Tell me when it's out" />
           <p className="mt-4 text-sm text-muted">
@@ -43,7 +52,7 @@ export default function Home() {
           </ul>
 
           <p className="mt-16 max-w-150 text-fg-2 leading-relaxed">
-            Open source, on the subscriptions you already pay for. Built in public by{" "}
+            Free and open source. Built in public by{" "}
             <a
               href={site.author.linkedin}
               rel="me"
