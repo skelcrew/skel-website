@@ -9,8 +9,8 @@ import { site } from "@/lib/site";
 
 const points = [
   [
-    "A team, not a chat",
-    "A lead plans the work and hands each task to a builder. A fresh reviewer checks every pull request. You stop passing messages between agents.",
+    "Agents that work together",
+    "A lead plans the work and hands each task to a builder. A fresh reviewer checks every pull request. The agents pass work between them, so you don't have to.",
   ],
   [
     "Always on, sandboxed",
