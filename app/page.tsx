@@ -13,6 +13,10 @@ const points = [
     "A lead plans the work and hands each task to a builder. A fresh reviewer checks every pull request. You stop passing messages between agents.",
   ],
   [
+    "Always on, on your server",
+    "The team runs on a server you control, like a Hetzner box or a Sprite on Fly.io, and keeps working after you close the laptop. Your code never passes through us.",
+  ],
+  [
     "In the apps you already use",
     "Work comes in as GitHub issues and goes out as pull requests, so your team keeps working where it already works. More apps through plugins.",
   ],
@@ -33,16 +37,16 @@ export default function Home() {
             Your own team of coding agents, working while you're away.
           </h1>
           <p className="mb-10 max-w-150 text-[clamp(18px,1.9vw,22px)] leading-normal text-fg-2">
-            Skel gives you a team of coding agents that work together on your own server. They pick
-            up work in the apps your team already uses and run on whichever harness you prefer. You
-            close the laptop. You decide what merges.
+            Skel gives you a team of coding agents that work together, always on, on your own
+            server. They pick up work in the apps your team already uses and run on whichever
+            harness you prefer. You close the laptop. You decide what merges.
           </p>
           <SignupForm id="email-top" button="Tell me when it's out" />
           <p className="mt-4 text-sm text-muted">
             I'll email you when Skel launches. No newsletter.
           </p>
 
-          <ul className="mt-20 grid gap-6 border-t border-line pt-10 md:mt-28 md:grid-cols-3 md:gap-10">
+          <ul className="mt-20 grid gap-6 border-t border-line pt-10 md:mt-28 md:grid-cols-2 md:gap-x-16 md:gap-y-12 lg:grid-cols-4 lg:gap-x-10">
             {points.map(([title, text]) => (
               <li key={title}>
                 <p className="mb-2 font-medium text-fg">{title}</p>
