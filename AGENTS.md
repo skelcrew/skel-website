@@ -36,4 +36,4 @@ a Vercel preview link; check your change there too.
 - `public/install.sh` is a copy of `install.sh` from the skelcrew repo. `vercel.json` rewrites
   skelcrew.dev/install to it, for `curl -fsSL https://skelcrew.dev/install | sh`, and serves it as
   plain text. Keep the `.sh`: with `trailingSlash`, a file without an extension redirects to a
-  404. Copy it over unchanged when that file changes; never edit it here.
+  404. Next redirects /install to /install/ before any rewrite runs, so the rewrite matches both. Copy it over unchanged when that file changes; never edit it here.
