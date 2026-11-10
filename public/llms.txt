@@ -1,8 +1,8 @@
-# Skel
+# Skelcrew
 
-> Skel is your own team of coding agents, working while you're away. You brief a lead agent in the harness you already use. It writes the tasks and hands each one to a builder, and a fresh reviewer on another model checks every pull request. The team works on your own server, so you can close the laptop. You decide what merges. Open source.
+> Skelcrew is your own team of coding agents, working while you're away. You brief a lead agent in the harness you already use. It writes the tasks and hands each one to a builder, and a fresh reviewer on another model checks every pull request. The team works on your own server, so you can close the laptop. You decide what merges. Open source.
 
-Status: early. Earlier versions ran tasks to pull requests through phases, roles and gates defined as files; the current rewrite, started in November 2026, organises agents as a small team instead. No public release yet. Launching November 2026. Sign up for launch news at https://skel.run
+Status: early. Earlier versions ran tasks to pull requests through phases, roles and gates defined as files; the current rewrite, started in November 2026, organises agents as a small team instead. No public release yet. Launching November 2026. Sign up for launch news at https://skelcrew.dev
 
 ## The team
 
@@ -15,7 +15,7 @@ Status: early. Earlier versions ran tasks to pull requests through phases, roles
 
 - Task to merged pull request, while you're away
 - Many tasks at once, across repositories
-- Every pull request reviewed by a fresh agent; the verdict is a GitHub review and a `skel/review` status check
+- Every pull request reviewed by a fresh agent; the verdict is a GitHub review and a `skelcrew/review` status check
 - CI failures and pull request comments wake the builder again
 - It asks you only when it needs you: a builder's question, a review that won't settle, or a pull request that is approved and green
 - You decide what merges
@@ -24,7 +24,7 @@ Status: early. Earlier versions ran tasks to pull requests through phases, roles
 
 Being open and adaptable is a core design principle. Harnesses, models, forges and servers each sit behind one small seam.
 
-- Harnesses and models: Claude Code and Codex today, builder on one and reviewer on the other. Built to take any harness and any model, on the subscriptions you already pay for. Skel never resells model usage.
+- Harnesses and models: Claude Code and Codex today, builder on one and reviewer on the other. Built to take any harness and any model, on the subscriptions you already pay for. Skelcrew never resells model usage.
 - Forges: GitHub today. GitLab, Forgejo and Codeberg can plug in through the same seam.
 - Servers: the demo runs on a Sprite on Fly.io, which sleeps when there's no work. Any Linux machine that stays on works, reached over SSH.
 - Isolation: a sandbox per agent; your checkouts are never touched; your home folder and credentials are hidden; agents never see your tokens.
@@ -33,17 +33,17 @@ Being open and adaptable is a core design principle. Harnesses, models, forges a
 ## Settings example
 
 ```yaml
-# ~/.config/skel/config.yaml
+# ~/.config/skelcrew/config.yaml
 harness: claude
 builder:  { model: opus }
 reviewer: { harness: codex }
 max_rounds: 3
 
-# skel.yaml in a repository
+# skelcrew.yaml in a repository
 setup: [bun install]
 test: [bun test]
 ```
 
 ## Contact
 
-Built by Simon Carstensen in Denmark. hello@skel.run
+Built by Simon Carstensen in Denmark. hello@skelcrew.dev

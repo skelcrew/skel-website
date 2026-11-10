@@ -241,8 +241,8 @@ export function Handoff() {
       <Label className="mb-6">What you hand off</Label>
       <H2 className="mb-6 max-w-[18ch]">Your team owns the loop, from task to merge.</H2>
       <p className="mb-10 max-w-150 text-lg text-fg-2">
-        Most coding agents stop when they open a pull request. Skel's team stays on it, so you can
-        hand off the whole task, not just the first draft.
+        Most coding agents stop when they open a pull request. Skelcrew's team stays on it, so you
+        can hand off the whole task, not just the first draft.
       </p>
       <ul className="mb-14 flex flex-wrap gap-2.5">
         {handoffs.map((h) => (
@@ -308,7 +308,7 @@ export function Open() {
       <Label className="mb-6">Open</Label>
       <H2 className="mb-6 max-w-[16ch]">Open and adaptable, by design.</H2>
       <p className="mb-14 max-w-150 text-lg text-fg-2">
-        Agents, models and tools will keep changing. Skel is built so the team you set up today
+        Agents, models and tools will keep changing. Skelcrew is built so the team you set up today
         isn't tied to any of them: each harness, forge and server sits behind one small seam, and
         the code is open for you to read, change and run.
       </p>
@@ -337,7 +337,10 @@ type Stage = "done" | "now" | "next";
 const roadmap: [Stage, React.ReactNode][] = [
   ["done", "Four versions: task to pull request, unattended and sandboxed, with four harnesses"],
   ["done", "Learned from daily use that flows got in the way; a new design around threads"],
-  ["now", "Skel on the server, and one thread to a reviewed pull request. Skel builds Skel"],
+  [
+    "now",
+    "Skelcrew on the server, and one thread to a reviewed pull request. Skelcrew builds Skelcrew",
+  ],
   ["now", "First developers onboarded by hand"],
   [
     "next",
@@ -358,13 +361,13 @@ export function Status() {
       <H2 className="mb-6 max-w-[16ch]">Early, and moving fast.</H2>
       <div className="mb-14 max-w-150 space-y-5 text-lg leading-relaxed text-fg-2">
         <p>
-          Earlier versions of Skel were a software factory: phases, roles and gates defined as
+          Earlier versions of Skelcrew were a software factory: phases, roles and gates defined as
           files. Using it every day, I kept stepping outside the flow just to get things done. The
           models improved faster than the flows.
         </p>
         <p>
-          So the new Skel organises agents the way a good small team works, and keeps one piece of
-          process: build and review. It's being rewritten now, carrying over what four versions
+          So the new Skelcrew organises agents the way a good small team works, and keeps one piece
+          of process: build and review. It's being rewritten now, carrying over what four versions
           taught.
         </p>
       </div>
@@ -388,7 +391,7 @@ export function Status() {
 const faq = [
   [
     "How is this different from a few Claude Code windows and tmux?",
-    "Those stop when your laptop sleeps, and you are the scheduler. Skel's team runs on your server, each agent in its own sandbox, and stays on each task through review and CI until it's ready to merge. It asks for you only when it needs you.",
+    "Those stop when your laptop sleeps, and you are the scheduler. Skelcrew's team runs on your server, each agent in its own sandbox, and stays on each task through review and CI until it's ready to merge. It asks for you only when it needs you.",
   ],
   [
     "Do I have to move to a new app?",
@@ -404,11 +407,11 @@ const faq = [
   ],
   [
     "Do I need a server?",
-    "A machine that stays on, so the work carries on when you close the laptop. Skel can create a Sprite on Fly.io for you, which sleeps when there's no work, or run on any Linux server you already have, over SSH.",
+    "A machine that stays on, so the work carries on when you close the laptop. Skelcrew can create a Sprite on Fly.io for you, which sleeps when there's no work, or run on any Linux server you already have, over SSH.",
   ],
   [
     "Do I need a new subscription?",
-    "No. Skel is free and open source, and runs on the model plans you already pay for. It never resells model usage.",
+    "No. Skelcrew is free and open source, and runs on the model plans you already pay for. It never resells model usage.",
   ],
   [
     "When can I use it?",
@@ -459,7 +462,7 @@ export function About() {
         </div>
       </div>
       <div className="space-y-5 text-lg leading-relaxed text-fg-2 md:pt-12">
-        <p>I'm building Skel because I hit this wall every day, building with coding agents.</p>
+        <p>I'm building Skelcrew because I hit this wall every day, building with coding agents.</p>
         <p>
           Twenty years of shipping web software: agencies, SaaS, and startups like GoMore and
           TRAEDE. These days I build with coding agents every day.
@@ -472,9 +475,9 @@ export function About() {
           ))}
         </p>
         <p className="rounded-xl border border-line bg-panel p-5 text-base">
-          Interested in backing Skel?{" "}
+          Interested in backing Skelcrew?{" "}
           <a
-            href={`mailto:${site.email}?subject=Skel`}
+            href={`mailto:${site.email}?subject=Skelcrew`}
             className="text-fg underline underline-offset-4"
           >
             Get in touch

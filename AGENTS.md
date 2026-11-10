@@ -1,6 +1,6 @@
-# skel.run
+# skelcrew.dev
 
-The marketing site for Skel, at skel.run. Next.js (App Router) with static export, Tailwind CSS v4,
+The marketing site for Skelcrew, at skelcrew.dev. Next.js (App Router) with static export, Tailwind CSS v4,
 TypeScript, Bun. The build is plain HTML in `out/`, hosted on Vercel. Every pull request gets
 a Vercel preview link; check your change there too.
 
