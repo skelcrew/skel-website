@@ -15,7 +15,7 @@ Status: early. Earlier versions ran tasks to pull requests through phases, roles
 
 - Task to merged pull request, while you're away
 - Many tasks at once, across repositories
-- Every pull request reviewed by a fresh agent; the verdict is a GitHub review and a `skel/review` status check
+- Every pull request reviewed by a fresh agent; the verdict is a GitHub review and a `skelcrew/review` status check
 - CI failures and pull request comments wake the builder again
 - It asks you only when it needs you: a builder's question, a review that won't settle, or a pull request that is approved and green
 - You decide what merges
@@ -33,13 +33,13 @@ Being open and adaptable is a core design principle. Harnesses, models, forges a
 ## Settings example
 
 ```yaml
-# ~/.config/skel/config.yaml
+# ~/.config/skelcrew/config.yaml
 harness: claude
 builder:  { model: opus }
 reviewer: { harness: codex }
 max_rounds: 3
 
-# skel.yaml in a repository
+# skelcrew.yaml in a repository
 setup: [bun install]
 test: [bun test]
 ```
