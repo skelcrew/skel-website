@@ -33,6 +33,7 @@ a Vercel preview link; check your change there too.
 - Copy: short, plain sentences. No hype words. Don't claim anything about the product that
   isn't true yet; label illustrative output as illustrative.
 - Keep `public/llms.txt` in step with the page when the product facts change.
-- `public/install` is a copy of `install.sh` from the skelcrew repo, served at skelcrew.dev/install
-  for `curl -fsSL https://skelcrew.dev/install | sh`. Copy it over unchanged when that file changes;
-  never edit it here. `vercel.json` serves it as plain text.
+- `public/install.sh` is a copy of `install.sh` from the skelcrew repo. `vercel.json` rewrites
+  skelcrew.dev/install to it, for `curl -fsSL https://skelcrew.dev/install | sh`, and serves it as
+  plain text. Keep the `.sh`: with `trailingSlash`, a file without an extension redirects to a
+  404. Copy it over unchanged when that file changes; never edit it here.
