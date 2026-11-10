@@ -98,7 +98,7 @@ export function Figure({
 }
 
 /**
- * The Skel mark: a block S with a dashed outline shadow, redrawn from
+ * The Skelcrew mark: a block S with a dashed outline shadow, redrawn from
  * public/skel-icon.png so it follows the text colour.
  */
 export function Logo({ size = 28 }: { size?: number }) {

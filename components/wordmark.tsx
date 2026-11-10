@@ -1,16 +1,16 @@
-// The ASCII wordmark, carried over from skelcrew.dev, drawn as SVG on a character grid
+// The ASCII wordmark "skelcrew", drawn as SVG on a character grid
 // so it scales exactly and doesn't depend on fonts: each █ becomes a filled cell, and the
 // outline characters (/ | _ \) become thin strokes, like the logo's shadow.
 
 const art = String.raw`
            /██                 /██
           | ██                | ██
-  /███████| ██   /██  /██████ | ██
- /██_____/| ██  /██/ /██__  ██| ██
-|  ██████ | ██████/ | ████████| ██
- \____  ██| ██_  ██ | ██_____/| ██
- /███████/| ██ \  ██|  ███████| ██
-|_______/ |__/  \__/ \_______/|__/
+  /███████| ██   /██  /██████ | ██  /███████  /██████   /██████  /██  /██  /██
+ /██_____/| ██  /██/ /██__  ██| ██ /██_____/ /██__  ██ /██__  ██| ██ | ██ | ██
+|  ██████ | ██████/ | ████████| ██| ██      | ██  \__/| ████████| ██ | ██ | ██
+ \____  ██| ██_  ██ | ██_____/| ██| ██      | ██      | ██_____/| ██ | ██ | ██
+ /███████/| ██ \  ██|  ███████| ██|  ███████| ██      |  ███████|  █████/████/
+|_______/ |__/  \__/ \_______/|__/ \_______/|__/       \_______/ \_____/\___/
 `.slice(1, -1);
 
 const CELL_W = 12;
@@ -67,7 +67,7 @@ export function Wordmark({
       viewBox={`0 0 ${cols * CELL_W} ${rows.length * CELL_H}`}
       className={`block h-auto w-full ${className}`}
       role="img"
-      aria-label="skel"
+      aria-label="skelcrew"
     >
       <g fill="currentColor">
         {blocks.map((b) => (

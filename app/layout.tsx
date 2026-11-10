@@ -12,15 +12,15 @@ const description =
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: "Skel · your own team of coding agents",
+  title: "Skelcrew · your own team of coding agents",
   description,
   icons: {
     icon: "/skel-icon.png",
     apple: "/skel-icon.png",
   },
   openGraph: {
-    siteName: "Skel",
-    title: "Skel · your own team of coding agents",
+    siteName: "Skelcrew",
+    title: "Skelcrew · your own team of coding agents",
     description:
       "Your own team of coding agents, working while you're away. Open source, on your own server.",
     url: site.url,
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "Skel: your own team of coding agents, working while you're away.",
+        alt: "Skelcrew: your own team of coding agents, working while you're away.",
       },
     ],
   },

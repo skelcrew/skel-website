@@ -21,7 +21,7 @@ export const dynamic = "force-static";
 const size = { width: 1200, height: 630 };
 
 const PAD = 72;
-const markWidth = 420;
+const markWidth = 680;
 const markHeight = Math.round((markWidth / wordmark.width) * wordmark.height);
 
 export function GET() {
@@ -42,7 +42,7 @@ export function GET() {
         height={markHeight}
         viewBox={`0 0 ${wordmark.width} ${wordmark.height}`}
         role="img"
-        aria-label="skel"
+        aria-label="skelcrew"
       >
         {wordmark.blocks.map((b) => (
           <rect
@@ -81,7 +81,7 @@ export function GET() {
           color: color.muted,
         }}
       >
-        <span>skel.run</span>
+        <span>skelcrew.dev</span>
         <span style={{ color: color.accent }}>Open source</span>
       </div>
     </div>,

@@ -11,7 +11,7 @@ export function Footer() {
   return (
     <footer className="border-t border-line">
       <Container className="py-14">
-        <Wordmark className="mx-auto mb-12 max-w-90 text-line-2" shadowClassName="text-faint" />
+        <Wordmark className="mx-auto mb-12 max-w-160 text-line-2" shadowClassName="text-faint" />
         <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-center text-sm text-muted">
           <p>
             Built in public by{" "}
@@ -31,7 +31,7 @@ export function Footer() {
               </a>
             ))}
           </nav>
-          <Label>skel.run</Label>
+          <Label>skelcrew.dev</Label>
         </div>
       </Container>
     </footer>

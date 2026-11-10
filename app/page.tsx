@@ -37,13 +37,13 @@ export default function Home() {
             Your own team of coding agents, working while you're away.
           </h1>
           <p className="mb-10 max-w-150 text-[clamp(18px,1.9vw,22px)] leading-normal text-fg-2">
-            Skel gives you a team of coding agents that work together, always on and each in its own
-            sandbox, on your server. They pick up work in the apps your team already uses and run on
-            whichever harness you prefer. You close the laptop. You decide what merges.
+            Skelcrew gives you a team of coding agents that work together, always on and each in its
+            own sandbox, on your server. They pick up work in the apps your team already uses and
+            run on whichever harness you prefer. You close the laptop. You decide what merges.
           </p>
           <SignupForm id="email-top" button="Tell me when it's out" />
           <p className="mt-4 text-sm text-muted">
-            I'll email you when Skel launches. No newsletter.
+            I'll email you when Skelcrew launches. No newsletter.
           </p>
 
           <ul className="mt-20 grid gap-6 border-t border-line pt-10 md:mt-28 md:grid-cols-2 md:gap-x-16 md:gap-y-12 lg:grid-cols-4 lg:gap-x-10">

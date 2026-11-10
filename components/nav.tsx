@@ -8,13 +8,13 @@ export function Nav() {
       <Container className="flex h-16 items-center gap-10">
         <a href="/" className="flex items-center gap-2.5 text-lg font-semibold tracking-tight">
           <Logo size={26} />
-          Skel
+          Skelcrew
         </a>
         {site.repoPublic && (
           <a
             href={site.repo}
             className="ml-auto flex items-center gap-2 text-sm text-fg-2 hover:text-fg"
-            aria-label="Skel on GitHub"
+            aria-label="Skelcrew on GitHub"
           >
             <GithubIcon size={18} />
             <span className="hidden sm:inline">GitHub</span>

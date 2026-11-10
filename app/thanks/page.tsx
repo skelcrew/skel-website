@@ -4,7 +4,7 @@ import { Nav } from "@/components/nav";
 import { buttonStyles, Container, H2, Label } from "@/components/ui";
 
 // Buttondown sends confirmed subscribers here.
-export const metadata: Metadata = { title: "You're on the list · Skel" };
+export const metadata: Metadata = { title: "You're on the list · Skelcrew" };
 
 export default function Thanks() {
   return (
@@ -15,10 +15,10 @@ export default function Thanks() {
           <Label className="mb-6 text-ok">Confirmed</Label>
           <H2 className="mb-6">You're on the list.</H2>
           <p className="mb-10 max-w-130 text-lg text-fg-2">
-            Thanks for confirming. I'll email you when Skel launches.
+            Thanks for confirming. I'll email you when Skelcrew launches.
           </p>
           <a href="/" className={buttonStyles.ghost}>
-            Back to skel.run
+            Back to skelcrew.dev
           </a>
         </Container>
       </main>
